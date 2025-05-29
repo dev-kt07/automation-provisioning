@@ -13,3 +13,15 @@ module "ec2_instance" {
     Name = "MyEC2Instance"
   }
 }
+
+module "s3_bucket" {
+  source            = "./modules/s3_bucket"
+  bucket_name       = "bombay-saphire-123"
+  enable_versioning = true
+  enable_encryption = true
+
+  tags = {
+    Environment = "dev"
+    Project     = "s3-module-demo"
+  }
+}
