@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "ec2_instance" {
-  source             = "./ec2-module"
+  source             = "./modules/ec2"
   ami                = "ami-06b6e5225d1db5f46" # example Amazon Linux 2 AMI
   instance_type      = "t2.micro"
   key_name           = "github-action"
