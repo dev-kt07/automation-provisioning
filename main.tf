@@ -40,9 +40,9 @@ module "db_subnet_group" {
   description = "Subnet group for RDS"
 
   subnet_ids = [
-    "subnet-0be48a5104a8719db", "subnet-0c2ef04047ae31018"]
-   
-  
+  "subnet-0be48a5104a8719db", "subnet-0c2ef04047ae31018"]
+
+
 
   tags = {
     Name        = "my-db-subnet-group"
@@ -50,5 +50,26 @@ module "db_subnet_group" {
     Team        = "devops"
     Project     = "rds-mysql"
   }
+}
+
+module "rds" {
+  source = "./modules/rds"
+
+  db_subnet_group_name = module.db_subnet_group.db_subnet_group_name
+
+  identifier             = "mydb-instance"
+  allocated_storage      = 20
+  engine                 = "mysql"
+  engine_version         = "8.0"
+  instance_class         = "db.t3.micro"
+  db_name                = "mydatabase"
+  username               = "admin"
+  password               = "krishna123" # sensitive input
+  parameter_group_name   = "default.mysql8.0"
+  publicly_accessible    = false
+  vpc_security_group_ids = ["sg-01d6725cda2d2e40d"]
+
+  multi_az     = false
+  storage_type = "gp2"
 }
 
