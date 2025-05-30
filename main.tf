@@ -33,3 +33,22 @@ module "vpc" {
   availability_zones = ["ap-south-1a", "ap-south-1b"]
 }
 
+
+module "db_subnet_group" {
+  source      = "./modules/db_subnet_group"
+  name        = "my-db-subnet-group"
+  description = "Subnet group for RDS"
+
+  subnet_ids = [
+    "subnet-0be48a5104a8719db", "subnet-0c2ef04047ae31018"]
+   
+  
+
+  tags = {
+    Name        = "my-db-subnet-group"
+    Environment = "production"
+    Team        = "devops"
+    Project     = "rds-mysql"
+  }
+}
+
