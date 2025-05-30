@@ -33,12 +33,3 @@ module "vpc" {
   availability_zones = ["ap-south-1a", "ap-south-1b"]
 }
 
-module "db_subnet_group" {
-  source = "./modules/db_subnet_group"  # or a registry source
-  name        = "my-db-subnet-group"
-  description = "Subnet group for RDS"
-  subnet_ids  = ["subnet-0a8fc91b7a9043e29", "subnet-040b9382a8253e6d0"]
-  tags = {
-    Environment = "prod"
-  }
-}
