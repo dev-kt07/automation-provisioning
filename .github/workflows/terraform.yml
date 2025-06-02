@@ -49,5 +49,4 @@ jobs:
       - name: Apply Terraform
         if: github.event_name == 'push'
         run: terraform apply -auto-approve tfplan
-      - name: Import VPC Only
-        run: terraform import -target=module.vpc.aws_vpc.main module.vpc.aws_vpc.main vpc-0219578dc5af3223e
+     
