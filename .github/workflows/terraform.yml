@@ -38,7 +38,7 @@ jobs:
       - name: Import existing VPC from module
         run: |
          terraform state show module.vpc.aws_vpc.this || \
-         terraform import module.vpc.aws_vpc.this vpc-0219578dc5af3223e
+         terraform import module.vpc.aws_vpc.main vpc-0219578dc5af3223e
 
       - name: Validate Terraform
         run: terraform validate
