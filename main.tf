@@ -33,26 +33,6 @@ module "vpc" {
   availability_zones = ["ap-south-1a", "ap-south-1b"]
 }
 
-# 1. Reference Existing VPC by Name
-data "aws_vpc" "existing" {
-  filter {
-    name   = "tag:Name"
-    values = ["main-vpc"]
-  }
-}
-
-# 2. Reference Private Subnets by Name Pattern
-data "aws_subnets" "private" {
-  filter {
-    name   = "tag:Name"
-    values = ["my-private-subnet-*"]
-  }
-
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.existing.id]
-  }
-}
 
 
 

@@ -22,3 +22,20 @@ variable "availability_zones" {
   description = "List of availability zones"
   default     = [ "ap-south-1a", "ap-south-1b" ]
 }
+variable "env" {
+  type        = string
+  default     = "dev"
+  description = "Environment name (e.g., dev, prod)"
+}
+
+variable "project" {
+  type        = string
+  default     = "myapp"
+  description = "Project name or app name"
+}
+
+variable "create_nat_gateway" {
+  type        = bool
+  default     = true
+  description = "Whether to create NAT Gateway"
+}
